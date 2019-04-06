@@ -20,7 +20,6 @@ if version == 2:
     sys.setdefaultencoding('utf-8')
 else:
     import importlib
-
     importlib.reload(sys)
 
 
