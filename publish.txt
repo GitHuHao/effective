@@ -3,13 +3,22 @@
 第二步：在github上创建一个项目 （可以手动上传)
 
 第三步：编写自已的python项目
-.___
-  |- effective_sql
-  |    - __init__.py 
-  |        |- class MySQL (不同模块以类为单位扩展)
+effective (顶级目录)
+  |- effective (项目名称)
+  |    |- sql (模块名)
+  |      |- __init__.py 
+  |          |- MySQL (class)
+  |      |- ReadMe.txt
+  |    |- logger (模块名)
+  |      |- __init__.py 
+  |          |- SafeRotatingFileHandler (class)
+  |          |- get_logger (func)
+  |      |- ReadMe.txt
   |_ setup.py
+  |- ReadMe.txt
+  |- Publish.txt
   
- 注意：from effective_sql(package name) import MySQL (a self-def class in __init__.py) as sql (rename)
+ 注意：from effective.sql import MySQL
  
 第四步：打包
     1）编写setup.py
@@ -25,32 +34,37 @@
     Info: A effective style to operate sql
           Support for HA-connection, retry-support, high-tolerance params, self-batch execution
     Licence: GPL Licence
-    Url: https://github.com/GitHuHao/effective_sql.git
+    Url: https://github.com/GitHuHao/effective.git
+
 """
 
 from setuptools import setup, find_packages
 
 setup(
-    name="effective_sql",
-    version="0.1.6", # 每次迭代，版本递增
-    keywords=("pip", "upsert","crud", "mysql", "sql"), # 关键词检索
-    description="A effective style to operate sql",
-    long_description="Support for HA-connection, retry-support, high-tolerance params, self-batch execution",
-    license="GPL Licence", # 许可
-    url="https://github.com/GitHuHao/effective_sql.git", # 源码
-    author="HuHao", 
+    name="effective",
+    version="0.1.24",
+    keywords=("pip", "upsert","crud", "mysql", "sql", "logging"),
+    description="A effective style to play in python",
+    long_description='''effective.sql:
+                            Support for HA-connection, retry-support, high-tolerance params, self-batch execution
+                        effective.logger:
+                            multiprocess logging
+                     ''',
+    license="GPL Licence",
+    url="https://github.com/GitHuHao/effective.git",
+    author="HuHao",
     author_email="whohow20094702@163.com",
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=['pymysql', 'gevent']  # 依赖简介，默认自带依赖不填
+    install_requires=['pymysql', 'DBUtils', 'gevent', 'errno', 'logging']
 )
 --------------------------------------------------------------------------------------------------------------- 
 
     2）编译
     python setup.py bdist_egg # 生成类似 edssdk-0.0.1-py2.7.egg，支持 easy_install
     python setup.py sdist # 生成类似 edssdk-0.0.1.tar.gz，支持 pip12
-    注：上述命令执行完毕，生成了build,dist,effective_sql.egg-info 等目录。
+    注：上述命令执行完毕，生成了build,dist,effective.egg-info 等目录。
 
 第五步：模块发布
     1）安装twine发布工具
@@ -70,8 +84,8 @@ setup(
     3）发布上传
     twine upload dist/*
     4）安装
-    pip install effective_sql
+    pip install effective
     5）使用示例
-    usage: from effective_sql import MySQL as sql
+    usage: from effective.sql import MySQL
 
 
