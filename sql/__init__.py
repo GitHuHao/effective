@@ -9,7 +9,7 @@
     Info: A effective style to operate sql
           Support for HA-connection, retry-support, high-tolerance params, self-batch execution
     Licence: GPL Licence
-    Url: https://github.com/GitHuHao/effective_sql.git
+    Url: https://github.com/GitHuHao/effective.git
     Version: 0.1.10
 """
 import sys
